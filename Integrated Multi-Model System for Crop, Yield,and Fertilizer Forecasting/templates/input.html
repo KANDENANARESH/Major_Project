@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Input Details</title>
+<style>
+body {
+  background: url('static/input_bg.jpg') no-repeat center center/cover;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  color: rgba(255, 255, 255, 0.715);
+}
+.overlay {
+  /* background: rgba(0,0,0,0.6); */
+  margin: 50px auto;
+  width: 80%;
+  padding: 30px;
+  border-radius: 20px;
+}
+h2 { text-align: center; color: #00ffcc; }
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  width: 95%;
+}
+button {
+  grid-column: span 2;
+  background-color: #17b05c;
+  color: white;
+  font-size: 18px;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+button:hover { background-color: #048d48; }
+</style>
+</head>
+<body>
+<div class="overlay">
+  <h2>🌱 Enter The Given  Details ... !</h2>
+  <form method="POST" action="{{ url_for('predict') }}">
+    <input type="number" name="N" placeholder="Enter Nitrogen (N)" required>
+    <input type="number" name="P" placeholder="Enter Phosphorous (P)" required>
+    <input type="number" name="K" placeholder="Enter Potassium (K)" required>
+    <input type="number" name="temperature" placeholder="Enter Temperature (°C)" required>
+    <input type="number" name="humidity" placeholder=" Enter Humidity (%)" required>
+    <input type="number" step="0.1" name="ph" placeholder="Enter Soil pH" required>
+    <input type="number" name="rainfall" placeholder="Enter Rainfall (mm)" required>
+    <input type="number" step="0.1" name="area" placeholder="Enter Area (hectares)" required>
+    <select name="state" required>
+      <option value="">Select State</option>
+      {% for s in states %}
+      <option value="{{ s }}">{{ s }}</option>
+      {% endfor %}
+    </select>
+    <select name="season" required>
+      <option value="">Select Season</option>
+      {% for s in seasons %}
+      <option value="{{ s }}">{{ s }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">✅ Predict</button>
+  </form>
+</div>
+</body>
+</html>

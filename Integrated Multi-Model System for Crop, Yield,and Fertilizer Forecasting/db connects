@@ -1,0 +1,15 @@
+Soil & Weather (N, P, K, pH, Temp, Humidity, Rainfall)
+                     │
+                     ▼
+          Crop Recommendation Model
+                     │
+             Predicted Crop (e.g., rice)
+                     │
+       ┌─────────────┴─────────────┐
+       ▼                           ▼
+Crop_Yield.csv (State + Area + Season)   Fertilizer.csv (NPK + Crop)
+       │                           │
+Predict Production & Yield   Recommend Fertilizer
+       │                           │
+       └─────────────── Output ────┘
+
